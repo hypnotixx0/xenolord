@@ -1,5 +1,5 @@
 # Xeno Installer v1.3.40
-# One-line usage: iex (irm 'https://raw.githubusercontent.com/yourusername/yourrepo/main/xeno-installer.ps1')
+# One-line usage: iex (irm 'https://raw.githubusercontent.com/hypnotixx0/xenolord/main/xeno-installer.ps1')
 
 $Host.UI.RawUI.WindowTitle = "Xeno Installer - Unhiin"
 $Host.UI.RawUI.BackgroundColor = "Black"
@@ -12,17 +12,27 @@ Write-Host "           XENO INSTALLER v1.3.40"
 Write-Host "  =========================================="
 Write-Host ""
 
-$downloadUrl = "https://github.com/hypnotixx0/xenolord/blob/main/Xeno-v1.3.40.zip"
+$downloadUrl = "https://github.com/hypnotixx0/xenolord/raw/main/Xeno-v1.3.40.zip"
 $outputPath = "$env:USERPROFILE\Downloads\Xeno-v1.3.40.zip"
 
-Write-Host "  [*] Initializing download process..."
-Start-Sleep -Seconds 2
+# Loading animation function
+function Show-Loading {
+    param([string]$Message, [int]$Duration)
+    $dots = @(".  ", ".. ", "...")
+    $end = (Get-Date).AddSeconds($Duration)
+    while ((Get-Date) -lt $end) {
+        foreach ($d in $dots) {
+            Write-Host "`r  [*] $Message$d" -NoNewline
+            Start-Sleep -Milliseconds 400
+        }
+    }
+    Write-Host "`r  [*] $Message... Done!" -NoNewline
+    Write-Host ""
+}
 
-Write-Host "  [*] Connecting to server..."
-Start-Sleep -Seconds 1
-
-Write-Host "  [*] Preparing to download Xeno v1.3.40..."
-Start-Sleep -Seconds 1
+Show-Loading -Message "Initializing download process" -Duration 2
+Show-Loading -Message "Connecting to server" -Duration 1
+Show-Loading -Message "Preparing to download Xeno v1.3.40" -Duration 1
 
 Write-Host ""
 Write-Host "  [*] Downloading: Xeno-v1.3.40.zip"
